@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bab921fb_f7d89ef1",
+        "filename": "python-networking-ansible.spec",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2018-06-18T14:42:49Z",
+      "side": 1,
+      "message": "missing BuildRequires: openstack-macros",
+      "revId": "5bb58c97cf4bd2ca9f4a7be528c6f278ee219c00",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab921fb_77f36e74",
+        "filename": "python-networking-ansible.spec",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2018-06-18T14:42:49Z",
+      "side": 1,
+      "message": "This should be python3-neutron. It doesn\u0027t exist yet, so we will not enable it in python3 builder, but the requirement should be correct.",
+      "range": {
+        "startLine": 91,
+        "startChar": 11,
+        "endLine": 91,
+        "endChar": 17
+      },
+      "revId": "5bb58c97cf4bd2ca9f4a7be528c6f278ee219c00",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
