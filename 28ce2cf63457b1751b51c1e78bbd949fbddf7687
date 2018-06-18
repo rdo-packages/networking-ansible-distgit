@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bab921fb_1796724c",
+        "filename": "python-networking-ansible.spec",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 415
+      },
+      "writtenOn": "2018-06-18T11:54:36Z",
+      "side": 1,
+      "message": "Isn\u0027t this common for both python2 \u0026 3? ex. https://github.com/rdo-packages/networking-ovn-distgit/blob/rpm-master/python-networking-ovn.spec#L43",
+      "parentUuid": "bab921fb_97a162ac",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "28ce2cf63457b1751b51c1e78bbd949fbddf7687",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bab921fb_57abca89",
         "filename": "python-networking-ansible.spec",
         "patchSetId": 6
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "bab921fb_f792de56",
+        "filename": "python-networking-ansible.spec",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 415
+      },
+      "writtenOn": "2018-06-18T11:54:36Z",
+      "side": 1,
+      "message": "It uses neutron stuff for some reason (which it should not IMO). As this is an ML2 plugin only for neutron, do we really need to set the requirement for \u0027neutron\u0027 here?",
+      "parentUuid": "bab921fb_57abca89",
+      "revId": "28ce2cf63457b1751b51c1e78bbd949fbddf7687",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bab921fb_77a6cec2",
         "filename": "python-networking-ansible.spec",
         "patchSetId": 6
@@ -53,6 +95,30 @@
       "writtenOn": "2018-06-18T11:32:54Z",
       "side": 1,
       "message": "It\u0027s actually not running any test, see https://logs.rdoproject.org/60/14260/6/check/DLRN-rpmbuild/Za33c0a819060497aaa1ce9f03f80e7f3/centos/current/rpmbuild.log\n\nIt\u0027s likely missing some BuildRequires.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 26
+      },
+      "revId": "28ce2cf63457b1751b51c1e78bbd949fbddf7687",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab921fb_d79fda5d",
+        "filename": "python-networking-ansible.spec",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 415
+      },
+      "writtenOn": "2018-06-18T11:54:36Z",
+      "side": 1,
+      "message": "I can\u0027t understand what else is missing. \n\nAnyway the tests depend on python-ansible-runner and which does not seem to be available. Skipping the tests is good in a way unless there is a major issue with packaging.",
+      "parentUuid": "bab921fb_77a6cec2",
       "range": {
         "startLine": 132,
         "startChar": 0,
