@@ -8,6 +8,7 @@
 %endif
 
 
+%global service neutron
 %global library networking-ansible
 %global module networking_ansible
 
@@ -137,6 +138,8 @@ OpenStack Neutron ML2 driver for Ansible Networking
 %py3_build
 %endif
 
+mv %{_sysconfdir}/%{service}/plugins/ml2/ml2_conf_ansible.ini.sample  %{_sysconfdir}/%{service}/plugins/ml2/ml2_conf_ansible.ini
+
 # generate html docs
 %{__python2} setup.py build_sphinx -b html
 # remove the sphinx-build leftovers
@@ -159,6 +162,8 @@ rm -rf .testrepository
 %license LICENSE
 %{python2_sitelib}/%{module}
 %{python2_sitelib}/%{module}-*.egg-info
+%dir %{_sysconfdir}/ansible/roles/openstack-ml2
+%config(noreplace) %attr(0640, root, %{service}) %{_sysconfdir}/%{service}/plugins/ml2/*
 %exclude %{python2_sitelib}/%{module}/tests
 
 %files -n python2-%{library}-tests
@@ -174,6 +179,8 @@ rm -rf .testrepository
 %license LICENSE
 %{python3_sitelib}/%{module}
 %{python3_sitelib}/%{module}-*.egg-info
+%dir %{_sysconfdir}/ansible/roles/openstack-ml2
+%config(noreplace) %attr(0640, root, %{service}) %{_sysconfdir}/%{service}/plugins/ml2/*
 %exclude %{python3_sitelib}/%{module}/tests
 
 %files -n python3-%{library}-tests
