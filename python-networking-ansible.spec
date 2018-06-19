@@ -8,6 +8,7 @@
 %endif
 
 
+%global service neutron
 %global library networking-ansible
 %global module networking_ansible
 
@@ -148,6 +149,11 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %py3_install
 %endif
 
+# Rename sample config file
+install -d -m 755 %{buildroot}%{_sysconfdir}/neutron/plugins/ml2
+mv %{buildroot}/%{_sysconfdir}/%{service}/plugins/ml2/ml2_conf_ansible.ini.sample  %{buildroot}%{_sysconfdir}/%{service}/plugins/ml2/ml2_conf_ansible.ini
+chmod 640 %{buildroot}%{_sysconfdir}/%{service}/plugins/*/*.ini
+
 %check
 %if 0%{?with_python3}
 %{__python3} setup.py test
@@ -159,6 +165,8 @@ rm -rf .testrepository
 %license LICENSE
 %{python2_sitelib}/%{module}
 %{python2_sitelib}/%{module}-*.egg-info
+%dir %{_sysconfdir}/ansible/roles/openstack-ml2
+%config(noreplace) %attr(0640, root, %{service}) %{_sysconfdir}/%{service}/plugins/ml2/*
 %exclude %{python2_sitelib}/%{module}/tests
 
 %files -n python2-%{library}-tests
@@ -174,6 +182,8 @@ rm -rf .testrepository
 %license LICENSE
 %{python3_sitelib}/%{module}
 %{python3_sitelib}/%{module}-*.egg-info
+%dir %{_sysconfdir}/ansible/roles/openstack-ml2
+%config(noreplace) %attr(0640, root, %{service}) %{_sysconfdir}/%{service}/plugins/ml2/*
 %exclude %{python3_sitelib}/%{module}/tests
 
 %files -n python3-%{library}-tests
