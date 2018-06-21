@@ -182,3 +182,4 @@ rm -rf .testrepository
 %endif # with_python3
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/networking-ansible/commit/?id=5fb267fe9326f1f4be45d34cf2c17c7834ecd0f2
