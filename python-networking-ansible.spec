@@ -10,6 +10,7 @@
 
 %global library networking-ansible
 %global module networking_ansible
+%global ansible_role openstack-ml2
 
 Name:       python-%{library}
 Version:    XXX
@@ -125,6 +126,13 @@ This package contains the networking-ansible test files.
 OpenStack Neutron ML2 driver for Ansible Networking
 
 
+%package -n ansible-role-%{ansible_role}
+Summary: Role for OpenStack ML2 ansible mechanism driver
+
+%description -n ansible-role-%{ansible_role}
+Ansible roles for OpenStack ML2 mechanism driver
+
+
 %prep
 %autosetup -n %{library}-%{upstream_version} -S git
 
@@ -147,6 +155,13 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %if 0%{?with_python3}
 %py3_install
 %endif
+
+# Remove config sample and .travis file
+rm -rf %{buildroot}/usr/etc/neutron %{buildroot}/usr/etc/ansible/roles/%{ansible_role}/.travis.yml
+
+# Move openstack-ml2 role to proper location
+install -d -m 755 %{buildroot}%{_sysconfdir}/ansible/roles
+mv %{buildroot}/usr/etc/ansible/roles/%{ansible_role} %{buildroot}%{_sysconfdir}/ansible/roles
 
 %check
 %if 0%{?with_python3}
@@ -180,5 +195,9 @@ rm -rf .testrepository
 %license LICENSE
 %{python3_sitelib}/%{module}/tests
 %endif # with_python3
+
+%files -n ansible-role-%{ansible_role}
+%license LICENSE
+%{_sysconfdir}/ansible/roles/%{ansible_role}/*
 
 %changelog
