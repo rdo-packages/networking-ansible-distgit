@@ -148,6 +148,13 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %py3_install
 %endif
 
+# Remove config sample and .travis file
+rm -rf %{buildroot}/usr/etc/neutron %{buildroot}/usr/etc/ansible/roles/openstack-ml2/.travis.yml
+
+# Move openstack-ml2 role to proper location
+install -d -m 755 %{buildroot}%{_sysconfdir}/ansible/roles
+mv %{buildroot}/usr/etc/ansible/roles/openstack-ml2 %{buildroot}%{_sysconfdir}/ansible/roles
+
 %check
 %if 0%{?with_python3}
 %{__python3} setup.py test
@@ -160,6 +167,7 @@ rm -rf .testrepository
 %{python2_sitelib}/%{module}
 %{python2_sitelib}/%{module}-*.egg-info
 %exclude %{python2_sitelib}/%{module}/tests
+%{_sysconfdir}/ansible/roles/openstack-ml2/*
 
 %files -n python2-%{library}-tests
 %license LICENSE
@@ -175,6 +183,7 @@ rm -rf .testrepository
 %{python3_sitelib}/%{module}
 %{python3_sitelib}/%{module}-*.egg-info
 %exclude %{python3_sitelib}/%{module}/tests
+%{_sysconfdir}/ansible/roles/openstack-ml2/*
 
 %files -n python3-%{library}-tests
 %license LICENSE
