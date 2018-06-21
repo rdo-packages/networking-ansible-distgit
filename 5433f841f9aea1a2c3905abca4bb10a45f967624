@@ -46,6 +46,30 @@
       "revId": "5433f841f9aea1a2c3905abca4bb10a45f967624",
       "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab921fb_aebacfdf",
+        "filename": "python-networking-ansible.spec",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 113
+      },
+      "writtenOn": "2018-06-21T13:45:58Z",
+      "side": 1,
+      "message": "It\u0027s good for consistency with the rest of the ansible roles (and also with the puppet modules, which follow a similar pattern).\n\nAlso, if the Ansible roles are not always needed, it\u0027s good to keep them separate in case we only have to install the python-networking-ansible module.",
+      "parentUuid": "bab921fb_eef1e7ce",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 44
+      },
+      "revId": "5433f841f9aea1a2c3905abca4bb10a45f967624",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
     }
   ]
 }
