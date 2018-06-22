@@ -26,7 +26,7 @@ BuildRequires:  git
 BuildRequires:  openstack-macros
 
 %package -n python2-%{library}
-Summary:    penStack Neutron ML2 driver for Ansible Networking
+Summary:   OpenStack Neutron ML2 driver for Ansible Networking
 %{?python_provide:%python_provide python2-%{library}}
 
 BuildRequires:  python2-devel
