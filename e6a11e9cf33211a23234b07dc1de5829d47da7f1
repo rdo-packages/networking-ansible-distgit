@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bab921fb_1bec58c6",
+        "filename": "python-networking-ansible.spec",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 415
+      },
+      "writtenOn": "2018-06-22T13:28:37Z",
+      "side": 1,
+      "message": "I think you need to add this to for python3-%{library} too at L99",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 63
+      },
+      "revId": "e6a11e9cf33211a23234b07dc1de5829d47da7f1",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7",
+      "unresolved": false
+    }
+  ]
+}
