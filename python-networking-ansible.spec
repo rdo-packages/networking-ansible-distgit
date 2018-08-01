@@ -40,7 +40,7 @@ Requires:  python2-oslo-config >= 2:5.1.0
 Requires:  python2-pbr
 Requires:  python2-neutron-lib
 Requires:  python-neutron
-Requires:  python2-ansible-runner
+Requires:  python2-ansible-runner >= 1.0.5
 
 # Python code cannot work without the ansible roles
 Requires:  ansible-role-%{ansible_role} = %{version}-%{release}
@@ -95,7 +95,7 @@ Requires:  python3-oslo-config >= 2:5.1.0
 Requires:  python3-pbr
 Requires:  python3-neutron-lib
 Requires:  python3-neutron
-Requires:  python3-ansible-runner
+Requires:  python3-ansible-runner >= 1.0.5
 
 # Python code cannot work without the ansible roles
 Requires:  ansible-role-%{ansible_role} = %{version}-%{release}
