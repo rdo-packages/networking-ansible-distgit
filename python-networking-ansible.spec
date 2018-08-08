@@ -206,3 +206,4 @@ rm -rf .testrepository
 %{_datadir}/ansible/roles/%{ansible_role}/*
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/networking-ansible/commit/?id=b0adb6e47529ebf1f34314f55e0c590d349cf305
