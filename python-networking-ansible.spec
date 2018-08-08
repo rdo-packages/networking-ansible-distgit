@@ -57,6 +57,12 @@ BuildRequires:  python2-oslo-config
 BuildRequires:  python2-oslotest
 BuildRequires:  python2-stestr
 BuildRequires:  python2-subunit
+BuildRequires:  python-neutron
+BuildRequires:  python-neutron-tests
+BuildRequires:  python2-neutron-lib-tests
+BuildRequires:  python2-tempest
+BuildRequires:  python2-ansible-runner
+
 
 Requires:  python2-mock
 Requires:  python2-oslotest >= 1.10.0
@@ -112,6 +118,11 @@ BuildRequires:  python3-oslo-config
 BuildRequires:  python3-oslotest
 BuildRequires:  python3-stestr
 BuildRequires:  python3-subunit
+BuildRequires:  python3-neutron
+BuildRequires:  python3-neutron-lib-tests
+BuildRequires:  python3-neutron-tests
+BuildRequires:  python3-tempest
+BuildRequires:  python3-ansible-runner
 
 Requires:  python2-mock
 Requires:  python2-oslotest >= 1.10.0
