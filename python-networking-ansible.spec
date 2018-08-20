@@ -36,10 +36,10 @@ BuildRequires:  python2-neutron-lib
 # Required to compile translation files (add only if exist)
 BuildRequires:  python2-babel
 
-Requires:  python2-oslo-config >= 2:5.1.0
+Requires:  python2-oslo-config >= 2:5.2.0
 Requires:  python2-pbr
-Requires:  python2-neutron-lib
-Requires:  python-neutron
+Requires:  python2-neutron-lib >= 1.18.0
+Requires:  python-neutron >= 1:13.0.0
 Requires:  python2-ansible-runner >= 1.0.5
 
 # Python code cannot work without the ansible roles
@@ -97,10 +97,10 @@ BuildRequires:  python3-pbr
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-neutron-lib
 
-Requires:  python3-oslo-config >= 2:5.1.0
+Requires:  python3-oslo-config >= 2:5.2.0
 Requires:  python3-pbr
-Requires:  python3-neutron-lib
-Requires:  python3-neutron
+Requires:  python3-neutron-lib >= 1.18.0
+Requires:  python3-neutron >= 1:13.0.0
 Requires:  python3-ansible-runner >= 1.0.5
 
 # Python code cannot work without the ansible roles
