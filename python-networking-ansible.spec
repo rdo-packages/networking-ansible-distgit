@@ -1,9 +1,7 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
 
-# Python3 support in OpenStack starts with version 3.5,
-# which is only in Fedora 24+
-%if 0%{?fedora} >= 24
+%if 0%{?fedora} || 0%{?rhel} > 7
 %global with_python3 1
 %endif
 
@@ -39,7 +37,7 @@ BuildRequires:  python2-babel
 Requires:  python2-oslo-config >= 2:5.2.0
 Requires:  python2-pbr
 Requires:  python2-neutron-lib >= 1.18.0
-Requires:  python-neutron >= 1:13.0.0
+Requires:  python2-neutron >= 1:13.0.0
 Requires:  python2-ansible-runner >= 1.0.5
 
 # Python code cannot work without the ansible roles
@@ -57,8 +55,8 @@ BuildRequires:  python2-oslo-config
 BuildRequires:  python2-oslotest
 BuildRequires:  python2-stestr
 BuildRequires:  python2-subunit
-BuildRequires:  python-neutron
-BuildRequires:  python-neutron-tests
+BuildRequires:  python2-neutron
+BuildRequires:  python2-neutron-tests
 BuildRequires:  python2-neutron-lib-tests
 BuildRequires:  python2-tempest
 BuildRequires:  python2-ansible-runner
