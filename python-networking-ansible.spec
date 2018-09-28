@@ -1,9 +1,7 @@
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
 
-# Python3 support in OpenStack starts with version 3.5,
-# which is only in Fedora 24+
-%if 0%{?fedora} >= 24
+%if 0%{?fedora} || 0%{?rhel} > 7
 %global with_python3 1
 %endif
 
