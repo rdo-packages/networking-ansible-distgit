@@ -1,12 +1,16 @@
+# Macros for py2/py3 compatibility
+%if 0%{?fedora} || 0%{?rhel} > 7
+%global pyver %{python3_pkgversion}
+%else
+%global pyver 2
+%endif
+%global pyver_bin python%{pyver}
+%global pyver_sitelib %python%{pyver}_sitelib
+%global pyver_install %py%{pyver}_install
+%global pyver_build %py%{pyver}_build
+# End of macros for py2/py3 compatibility
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
-
-# Python3 support in OpenStack starts with version 3.5,
-# which is only in Fedora 24+
-%if 0%{?fedora} >= 24
-%global with_python3 1
-%endif
-
 
 %global library networking-ansible
 %global module networking_ansible
@@ -25,118 +29,68 @@ BuildArch:  noarch
 BuildRequires:  git
 BuildRequires:  openstack-macros
 
-%package -n python2-%{library}
+%package -n python%{pyver}-%{library}
 Summary:   OpenStack Neutron ML2 driver for Ansible Networking
-%{?python_provide:%python_provide python2-%{library}}
+%{?python_provide:%python_provide python%{pyver}-%{library}}
 
-BuildRequires:  python2-devel
-BuildRequires:  python2-pbr
-BuildRequires:  python2-setuptools
-BuildRequires:  python2-neutron-lib
+BuildRequires:  python%{pyver}-devel
+BuildRequires:  python%{pyver}-pbr
+BuildRequires:  python%{pyver}-setuptools
+BuildRequires:  python%{pyver}-neutron-lib
 # Required to compile translation files (add only if exist)
-BuildRequires:  python2-babel
+BuildRequires:  python%{pyver}-babel
 
-Requires:  python2-oslo-config >= 2:5.2.0
-Requires:  python2-pbr
-Requires:  python2-neutron-lib >= 1.18.0
-Requires:  python-neutron >= 1:13.0.0
-Requires:  python2-ansible-runner >= 1.0.5
+Requires:  python%{pyver}-oslo-config >= 2:5.2.0
+Requires:  python%{pyver}-pbr
+Requires:  python%{pyver}-neutron-lib >= 1.18.0
+Requires:  python%{pyver}-neutron >= 1:13.0.0
+Requires:  python%{pyver}-ansible-runner >= 1.0.5
 
 # Python code cannot work without the ansible roles
 Requires:  ansible-role-%{ansible_role} = %{version}-%{release}
 
-%description -n python2-%{library}
+%description -n python%{pyver}-%{library}
 OpenStack Neutron ML2 driver for Ansible Networking
 
 
-%package -n python2-%{library}-tests
+%package -n python%{pyver}-%{library}-tests
 Summary:    OpenStack Neutron ML2 driver for Ansible Networking tests
-Requires:   python2-%{library} = %{version}-%{release}
-BuildRequires:  python2-mock
-BuildRequires:  python2-oslo-config
-BuildRequires:  python2-oslotest
-BuildRequires:  python2-stestr
-BuildRequires:  python2-subunit
-BuildRequires:  python-neutron
-BuildRequires:  python-neutron-tests
-BuildRequires:  python2-neutron-lib-tests
-BuildRequires:  python2-tempest
-BuildRequires:  python2-ansible-runner
+Requires:   python%{pyver}-%{library} = %{version}-%{release}
+BuildRequires:  python%{pyver}-mock
+BuildRequires:  python%{pyver}-oslo-config
+BuildRequires:  python%{pyver}-oslotest
+BuildRequires:  python%{pyver}-stestr
+BuildRequires:  python%{pyver}-subunit
+BuildRequires:  python%{pyver}-neutron
+BuildRequires:  python%{pyver}-neutron-tests
+BuildRequires:  python%{pyver}-neutron-lib-tests
+BuildRequires:  python%{pyver}-tempest
+BuildRequires:  python%{pyver}-ansible-runner
 
 
-Requires:  python2-mock
-Requires:  python2-oslotest >= 1.10.0
-Requires:  python2-subunit >= 1.0.0
-Requires:  python2-stestr
+Requires:  python%{pyver}-mock
+Requires:  python%{pyver}-oslotest >= 1.10.0
+Requires:  python%{pyver}-subunit >= 1.0.0
+Requires:  python%{pyver}-stestr
 
-%description -n python2-%{library}-tests
+%description -n python%{pyver}-%{library}-tests
 OpenStack Neutron ML2 driver for Ansible Networking
 
 This package contains the networking-ansible test files.
 
 
-%package -n python-%{library}-doc
+%package -n python%{pyver}-%{library}-doc
 Summary:    OpenStack Neutron ML2 driver for Ansible Networking Documentaion
+%{?python_provide:%python_provide python%{pyver}-%{library}-doc}
 
-BuildRequires:  python2-openstackdocstheme
-BuildRequires:  python2-sphinx
-BuildRequires:  python2-oslo-sphinx
+BuildRequires:  python%{pyver}-openstackdocstheme
+BuildRequires:  python%{pyver}-sphinx
+BuildRequires:  python%{pyver}-oslo-sphinx
 
-%description -n python-%{library}-doc
+%description -n python%{pyver}-%{library}-doc
 OpenStack Neutron ML2 driver for Ansible Networking
 
 This package contains the networking-ansible documentation.
-
-%if 0%{?with_python3}
-%package -n python3-%{library}
-Summary:    OpenStack Neutron ML2 driver for Ansible Networking
-%{?python_provide:%python_provide python3-%{library}}
-
-BuildRequires:  python3-devel
-BuildRequires:  python3-pbr
-BuildRequires:  python3-setuptools
-BuildRequires:  python3-neutron-lib
-
-Requires:  python3-oslo-config >= 2:5.2.0
-Requires:  python3-pbr
-Requires:  python3-neutron-lib >= 1.18.0
-Requires:  python3-neutron >= 1:13.0.0
-Requires:  python3-ansible-runner >= 1.0.5
-
-# Python code cannot work without the ansible roles
-Requires:  ansible-role-%{ansible_role} = %{version}-%{release}
-
-%description -n python3-%{library}
-OpenStack Neutron ML2 driver for Ansible Networking
-
-
-%package -n python3-%{library}-tests
-Summary:    OpenStack example library tests
-Requires:   python3-%{library} = %{version}-%{release}
-BuildRequires:  python3-mock
-BuildRequires:  python3-oslo-config
-BuildRequires:  python3-oslotest
-BuildRequires:  python3-stestr
-BuildRequires:  python3-subunit
-BuildRequires:  python3-neutron
-BuildRequires:  python3-neutron-lib-tests
-BuildRequires:  python3-neutron-tests
-BuildRequires:  python3-tempest
-BuildRequires:  python3-ansible-runner
-
-Requires:  python2-mock
-Requires:  python2-oslotest >= 1.10.0
-Requires:  python2-subunit >= 1.0.0
-Requires:  python2-stestr
-
-
-%description -n python3-%{library}-tests
-OpenStack Neutron ML2 driver for Ansible Networking
-
-This package contains the networking-ansible test files.
-
-%endif # with_python3
-
 
 %description
 OpenStack Neutron ML2 driver for Ansible Networking
@@ -156,21 +110,15 @@ Ansible roles for OpenStack ML2 mechanism driver
 %{py_req_cleanup}
 
 %build
-%py2_build
-%if 0%{?with_python3}
-%py3_build
-%endif
+%{pyver_build}
 
 # generate html docs
-%{__python2} setup.py build_sphinx -b html
-# remove the sphinx-build leftovers
+%{pyver_bin} setup.py build_sphinx -b html
+# remove the sphinx-build-%{pyver} leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
 
 %install
-%py2_install
-%if 0%{?with_python3}
-%py3_install
-%endif
+%{pyver_install}
 
 # Remove config sample and .travis file
 rm -rf %{buildroot}/usr/etc/neutron %{buildroot}/usr/etc/ansible/roles/%{ansible_role}/.travis.yml
@@ -180,36 +128,21 @@ install -d -m 755 %{buildroot}%{_datadir}/ansible/roles
 mv %{buildroot}/usr/etc/ansible/roles/%{ansible_role} %{buildroot}%{_datadir}/ansible/roles
 
 %check
-%if 0%{?with_python3}
-stestr-3 run
-%endif
-stestr run
+stestr-%{pyver} run
 
-%files -n python2-%{library}
+%files -n python%{pyver}-%{library}
 %license LICENSE
-%{python2_sitelib}/%{module}
-%{python2_sitelib}/%{module}-*.egg-info
-%exclude %{python2_sitelib}/%{module}/tests
+%{pyver_sitelib}/%{module}
+%{pyver_sitelib}/%{module}-*.egg-info
+%exclude %{pyver_sitelib}/%{module}/tests
 
-%files -n python2-%{library}-tests
+%files -n python%{pyver}-%{library}-tests
 %license LICENSE
-%{python2_sitelib}/%{module}/tests
+%{pyver_sitelib}/%{module}/tests
 
-%files -n python-%{library}-doc
+%files -n python%{pyver}-%{library}-doc
 %license LICENSE
 %doc doc/build/html README.rst
-
-%if 0%{?with_python3}
-%files -n python3-%{library}
-%license LICENSE
-%{python3_sitelib}/%{module}
-%{python3_sitelib}/%{module}-*.egg-info
-%exclude %{python3_sitelib}/%{module}/tests
-
-%files -n python3-%{library}-tests
-%license LICENSE
-%{python3_sitelib}/%{module}/tests
-%endif # with_python3
 
 %files -n ansible-role-%{ansible_role}
 %license LICENSE
