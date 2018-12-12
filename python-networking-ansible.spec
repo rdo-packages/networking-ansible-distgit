@@ -33,10 +33,12 @@ BuildRequires:  openstack-macros
 Summary:   OpenStack Neutron ML2 driver for Ansible Networking
 %{?python_provide:%python_provide python%{pyver}-%{library}}
 
+BuildRequires:  python%{pyver}-ansible-runner
 BuildRequires:  python%{pyver}-devel
+BuildRequires:  python%{pyver}-neutron-lib-tests
+BuildRequires:  python%{pyver}-neutron-tests
 BuildRequires:  python%{pyver}-pbr
 BuildRequires:  python%{pyver}-setuptools
-BuildRequires:  python%{pyver}-neutron-lib
 # Required to compile translation files (add only if exist)
 BuildRequires:  python%{pyver}-babel
 
