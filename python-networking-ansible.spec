@@ -13,13 +13,13 @@
 %global ansible_role openstack-ml2
 
 Name:       python-%{library}
-Version:    XXX
-Release:    XXX
+Version:    0.1.0
+Release:    1%{?dist}
 Summary:    OpenStack Neutron ML2 driver for Ansible Networking
 License:    ASL 2.0
 URL:        https://storyboard.openstack.org/#!/project/986
 
-Source0:    http://tarballs.openstack.org/%{library}/%{library}-master.tar.gz
+Source0:    http://tarballs.openstack.org/%{library}/%{library}-%{upstream_version}.tar.gz
 
 BuildArch:  noarch
 BuildRequires:  git
@@ -38,8 +38,8 @@ BuildRequires:  python2-babel
 
 Requires:  python2-oslo-config >= 2:5.1.0
 Requires:  python2-pbr
-Requires:  python2-neutron-lib
-Requires:  python-neutron
+Requires:  python2-neutron-lib >= 1.13.0
+Requires:  python-neutron >= 1:12.0.0
 Requires:  python2-ansible-runner >= 1.0.5
 
 # Python code cannot work without the ansible roles
@@ -65,7 +65,7 @@ BuildRequires:  python2-ansible-runner
 
 
 Requires:  python2-mock
-Requires:  python2-oslotest >= 1.10.0
+Requires:  python2-oslotest >= 3.2.0
 Requires:  python2-subunit >= 1.0.0
 Requires:  python2-stestr
 
@@ -99,8 +99,8 @@ BuildRequires:  python3-neutron-lib
 
 Requires:  python3-oslo-config >= 2:5.1.0
 Requires:  python3-pbr
-Requires:  python3-neutron-lib
-Requires:  python3-neutron
+Requires:  python3-neutron-lib >= 1.13.0
+Requires:  python3-neutron >= 1:12.0.0
 Requires:  python3-ansible-runner >= 1.0.5
 
 # Python code cannot work without the ansible roles
@@ -125,7 +125,7 @@ BuildRequires:  python3-tempest
 BuildRequires:  python3-ansible-runner
 
 Requires:  python2-mock
-Requires:  python2-oslotest >= 1.10.0
+Requires:  python2-oslotest >= 3.2.0
 Requires:  python2-subunit >= 1.0.0
 Requires:  python2-stestr
 
@@ -216,3 +216,5 @@ stestr run
 %{_datadir}/ansible/roles/%{ansible_role}/*
 
 %changelog
+* Tue Jan 15 2019 Jakub Libosvar <libosvar@redhat.com> - 0.1.0-1
+- Initial Queens import
