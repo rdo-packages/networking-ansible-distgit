@@ -13,8 +13,8 @@
 %global ansible_role openstack-ml2
 
 Name:       python-%{library}
-Version:    XXX
-Release:    XXX
+Version:    0.1.0
+Release:    1
 Summary:    OpenStack Neutron ML2 driver for Ansible Networking
 License:    ASL 2.0
 URL:        https://storyboard.openstack.org/#!/project/986
@@ -216,3 +216,5 @@ stestr run
 %{_datadir}/ansible/roles/%{ansible_role}/*
 
 %changelog
+* Tue Jan 15 2019 Jakub Libosvar <libosvar@redhat.com> - 0.1.0-1
+- Initial Queens import
