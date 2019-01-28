@@ -78,7 +78,7 @@ OpenStack Neutron ML2 driver for Ansible Networking
 
 This package contains the networking-ansible test files.
 
-
+%if 0%{?with_doc}
 %package -n python%{pyver}-%{library}-doc
 Summary:    OpenStack Neutron ML2 driver for Ansible Networking Documentaion
 %{?python_provide:%python_provide python%{pyver}-%{library}-doc}
@@ -91,6 +91,7 @@ BuildRequires:  python%{pyver}-oslo-sphinx
 OpenStack Neutron ML2 driver for Ansible Networking
 
 This package contains the networking-ansible documentation.
+%endif
 
 %description
 OpenStack Neutron ML2 driver for Ansible Networking
@@ -112,10 +113,12 @@ Ansible roles for OpenStack ML2 mechanism driver
 %build
 %{pyver_build}
 
+%if 0%{?with_doc}
 # generate html docs
 %{pyver_bin} setup.py build_sphinx -b html
 # remove the sphinx-build-%{pyver} leftovers
 rm -rf doc/build/html/.{doctrees,buildinfo}
+%endif
 
 %install
 %{pyver_install}
@@ -140,9 +143,11 @@ stestr-%{pyver} run
 %license LICENSE
 %{pyver_sitelib}/%{module}/tests
 
+%if 0%{?with_doc}
 %files -n python%{pyver}-%{library}-doc
 %license LICENSE
 %doc doc/build/html README.rst
+%endif
 
 %files -n ansible-role-%{ansible_role}
 %license LICENSE
