@@ -13,7 +13,7 @@
 %global ansible_role openstack-ml2
 
 Name:       python-%{library}
-Version:    1.0.5
+Version:    1.0.6
 Release:    1%{?dist}
 Summary:    OpenStack Neutron ML2 driver for Ansible Networking
 License:    ASL 2.0
@@ -216,6 +216,9 @@ stestr run
 %{_datadir}/ansible/roles/%{ansible_role}/*
 
 %changelog
+* Thu Feb 21 2018 dradez@redhat.com - 1.0.5-1
+- Update to 1.0.6 version
+
 * Tue Dec 04 2018 dradez@redhat.com - 1.0.5-1
 - Update to 1.0.5 version
 
