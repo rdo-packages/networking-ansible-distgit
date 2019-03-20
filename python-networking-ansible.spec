@@ -41,9 +41,9 @@ BuildRequires:  python%{pyver}-neutron-lib
 BuildRequires:  python%{pyver}-babel
 
 Requires:  python%{pyver}-oslo-config >= 2:5.2.0
-Requires:  python%{pyver}-pbr
+Requires:  python%{pyver}-pbr >= 2.0
 Requires:  python%{pyver}-neutron-lib >= 1.18.0
-Requires:  python%{pyver}-neutron >= 1:13.0.0
+Requires:  openstack-neutron-common >= 1:13.0.0
 Requires:  python%{pyver}-ansible-runner >= 1.0.5
 
 # Python code cannot work without the ansible roles
