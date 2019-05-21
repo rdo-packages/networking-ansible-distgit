@@ -131,7 +131,7 @@ install -d -m 755 %{buildroot}%{_datadir}/ansible/roles
 mv %{buildroot}/usr/etc/ansible/roles/%{ansible_role} %{buildroot}%{_datadir}/ansible/roles
 
 %check
-stestr-%{pyver} run
+PYTHON=%{pyver_bin} stestr-%{pyver} run
 
 %files -n python%{pyver}-%{library}
 %license LICENSE
