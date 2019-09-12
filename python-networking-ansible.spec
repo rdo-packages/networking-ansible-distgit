@@ -85,7 +85,6 @@ Summary:    OpenStack Neutron ML2 driver for Ansible Networking Documentaion
 
 BuildRequires:  python%{pyver}-openstackdocstheme
 BuildRequires:  python%{pyver}-sphinx
-BuildRequires:  python%{pyver}-oslo-sphinx
 
 %description -n python%{pyver}-%{library}-doc
 OpenStack Neutron ML2 driver for Ansible Networking
