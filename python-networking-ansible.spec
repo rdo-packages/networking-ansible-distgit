@@ -9,21 +9,28 @@
 %global pyver_install %py%{pyver}_install
 %global pyver_build %py%{pyver}_build
 # End of macros for py2/py3 compatibility
-%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
+%{!?upstream_version: %global upstream_version %{commit}}
+%global commit 5cefa6a7c6ee3ec2c25e23f25bdae9138202513e
+%global shortcommit %(c=%{commit}; echo ${c:0:7})
+# DO NOT REMOVE ALPHATAG
+%global alphatag .%{shortcommit}git
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
+
+%{?dlrn: %global tarsources %{library}-%{upstream_version}}
+%{!?dlrn: %global tarsources %{library}}
 
 %global library networking-ansible
 %global module networking_ansible
 %global ansible_role openstack-ml2
 
 Name:       python-%{library}
-Version:    XXX
-Release:    XXX
+Version:    1.1.1
+Release:    0.1%{?alphatag}%{?dist}
 Summary:    OpenStack Neutron ML2 driver for Ansible Networking
 License:    ASL 2.0
 URL:        https://storyboard.openstack.org/#!/project/986
 
-Source0:    http://tarballs.openstack.org/%{library}/%{library}-master.tar.gz
+Source0:    https://opendev.org/x/%{library}/archive/%{upstream_version}.tar.gz#/%{library}-%{shortcommit}.tar.gz
 
 BuildArch:  noarch
 BuildRequires:  git
@@ -104,7 +111,7 @@ Ansible roles for OpenStack ML2 mechanism driver
 
 
 %prep
-%autosetup -n %{library}-%{upstream_version} -S git
+%autosetup -n %{tarsources} -S git
 
 # Let's handle dependencies ourselves
 %{py_req_cleanup}
@@ -153,3 +160,5 @@ PYTHON=%{pyver_bin} stestr-%{pyver} run
 %{_datadir}/ansible/roles/%{ansible_role}/*
 
 %changelog
+* Thu Oct 24 2019 Yatin Karel <ykarel@redhat.com> 1.1.1-0.1.5cefa6agit
+- Update to pre release 1.1.1 (5cefa6a7c6ee3ec2c25e23f25bdae9138202513e)
