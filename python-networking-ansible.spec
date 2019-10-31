@@ -66,12 +66,14 @@ BuildRequires:  python%{pyver}-neutron-tests
 BuildRequires:  python%{pyver}-neutron-lib-tests
 BuildRequires:  python%{pyver}-tempest
 BuildRequires:  python%{pyver}-ansible-runner
+BuildRequires:  python%{pyver}-network-runner
 
 
 Requires:  python%{pyver}-mock
 Requires:  python%{pyver}-oslotest >= 1.10.0
 Requires:  python%{pyver}-subunit >= 1.0.0
 Requires:  python%{pyver}-stestr
+Requires:  python%{pyver}-network-runner
 
 %description -n python%{pyver}-%{library}-tests
 OpenStack Neutron ML2 driver for Ansible Networking
