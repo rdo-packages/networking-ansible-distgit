@@ -9,28 +9,21 @@
 %global pyver_install %py%{pyver}_install
 %global pyver_build %py%{pyver}_build
 # End of macros for py2/py3 compatibility
-%{!?upstream_version: %global upstream_version %{commit}}
-%global commit 5cefa6a7c6ee3ec2c25e23f25bdae9138202513e
-%global shortcommit %(c=%{commit}; echo ${c:0:7})
-# DO NOT REMOVE ALPHATAG
-%global alphatag .%{shortcommit}git
+%{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 %global with_doc %{!?_without_doc:1}%{?_without_doc:0}
-
-%{?dlrn: %global tarsources %{library}-%{upstream_version}}
-%{!?dlrn: %global tarsources %{library}}
 
 %global library networking-ansible
 %global module networking_ansible
 %global ansible_role openstack-ml2
 
 Name:       python-%{library}
-Version:    1.1.1
-Release:    0.1%{?alphatag}%{?dist}
+Version:    3.0.0
+Release:    1%{?dist}
 Summary:    OpenStack Neutron ML2 driver for Ansible Networking
 License:    ASL 2.0
 URL:        https://storyboard.openstack.org/#!/project/986
 
-Source0:    https://opendev.org/x/%{library}/archive/%{upstream_version}.tar.gz#/%{library}-%{shortcommit}.tar.gz
+Source0:    http://tarballs.openstack.org/%{library}/%{library}-%{upstream_version}.tar.gz
 
 BuildArch:  noarch
 BuildRequires:  git
@@ -73,12 +66,14 @@ BuildRequires:  python%{pyver}-neutron-tests
 BuildRequires:  python%{pyver}-neutron-lib-tests
 BuildRequires:  python%{pyver}-tempest
 BuildRequires:  python%{pyver}-ansible-runner
+BuildRequires:  python%{pyver}-network-runner
 
 
 Requires:  python%{pyver}-mock
 Requires:  python%{pyver}-oslotest >= 1.10.0
 Requires:  python%{pyver}-subunit >= 1.0.0
 Requires:  python%{pyver}-stestr
+Requires:  python%{pyver}-network-runner
 
 %description -n python%{pyver}-%{library}-tests
 OpenStack Neutron ML2 driver for Ansible Networking
@@ -111,7 +106,7 @@ Ansible roles for OpenStack ML2 mechanism driver
 
 
 %prep
-%autosetup -n %{tarsources} -S git
+%autosetup -n %{library}-%{upstream_version} -S git
 
 # Let's handle dependencies ourselves
 %{py_req_cleanup}
@@ -160,5 +155,8 @@ PYTHON=%{pyver_bin} stestr-%{pyver} run
 %{_datadir}/ansible/roles/%{ansible_role}/*
 
 %changelog
+* Thu Oct 31 2019 Alfredo Moralejo <amoralej@redhat.com> 3.0.0-1
+- Update to 3.0.0
+
 * Thu Oct 24 2019 Yatin Karel <ykarel@redhat.com> 1.1.1-0.1.5cefa6agit
 - Update to pre release 1.1.1 (5cefa6a7c6ee3ec2c25e23f25bdae9138202513e)
