@@ -162,3 +162,4 @@ PYTHON=%{pyver_bin} stestr-%{pyver} run
 %changelog
 * Thu Oct 24 2019 Yatin Karel <ykarel@redhat.com> 1.1.1-0.1.5cefa6agit
 - Update to pre release 1.1.1 (5cefa6a7c6ee3ec2c25e23f25bdae9138202513e)
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/networking-ansible/commit/?id=25d3a4e919d38ef8e4e2edc74c6ec9b7269eaa71
