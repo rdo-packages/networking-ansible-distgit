@@ -155,3 +155,4 @@ PYTHON=%{pyver_bin} stestr-%{pyver} run
 %{_datadir}/ansible/roles/%{ansible_role}/*
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/networking-ansible/commit/?id=dad87f4027762628a7f63b1a6448f77e4200351d
