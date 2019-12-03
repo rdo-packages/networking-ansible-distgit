@@ -45,6 +45,7 @@ Requires:  python%{pyver}-pbr >= 2.0
 Requires:  python%{pyver}-neutron-lib >= 1.18.0
 Requires:  openstack-neutron-common >= 1:13.0.0
 Requires:  python%{pyver}-ansible-runner >= 1.0.5
+Requires:  python%{pyver}-tooz >= 1.28.0
 
 # Python code cannot work without the ansible roles
 Requires:  ansible-role-%{ansible_role} = %{version}-%{release}
@@ -61,6 +62,7 @@ BuildRequires:  python%{pyver}-oslo-config
 BuildRequires:  python%{pyver}-oslotest
 BuildRequires:  python%{pyver}-stestr
 BuildRequires:  python%{pyver}-subunit
+BuildRequires:  python%{pyver}-tooz
 BuildRequires:  python%{pyver}-neutron
 BuildRequires:  python%{pyver}-neutron-tests
 BuildRequires:  python%{pyver}-neutron-lib-tests
