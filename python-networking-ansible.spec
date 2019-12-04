@@ -14,7 +14,6 @@
 
 %global library networking-ansible
 %global module networking_ansible
-%global ansible_role openstack-ml2
 
 Name:       python-%{library}
 Version:    XXX
@@ -46,9 +45,6 @@ Requires:  python%{pyver}-neutron-lib >= 1.18.0
 Requires:  openstack-neutron-common >= 1:13.0.0
 Requires:  python%{pyver}-ansible-runner >= 1.0.5
 Requires:  python%{pyver}-tooz >= 1.28.0
-
-# Python code cannot work without the ansible roles
-Requires:  ansible-role-%{ansible_role} = %{version}-%{release}
 
 %description -n python%{pyver}-%{library}
 OpenStack Neutron ML2 driver for Ansible Networking
@@ -100,13 +96,6 @@ This package contains the networking-ansible documentation.
 OpenStack Neutron ML2 driver for Ansible Networking
 
 
-%package -n ansible-role-%{ansible_role}
-Summary:   Role for OpenStack ML2 ansible mechanism driver
-
-%description -n ansible-role-%{ansible_role}
-Ansible roles for OpenStack ML2 mechanism driver
-
-
 %prep
 %autosetup -n %{library}-%{upstream_version} -S git
 
@@ -126,12 +115,8 @@ rm -rf doc/build/html/.{doctrees,buildinfo}
 %install
 %{pyver_install}
 
-# Remove config sample and .travis file
-rm -rf %{buildroot}/usr/etc/neutron %{buildroot}/usr/etc/ansible/roles/%{ansible_role}/.travis.yml
-
-# Move openstack-ml2 role to proper location
-install -d -m 755 %{buildroot}%{_datadir}/ansible/roles
-mv %{buildroot}/usr/etc/ansible/roles/%{ansible_role} %{buildroot}%{_datadir}/ansible/roles
+# Remove config sample
+rm -rf %{buildroot}/usr/etc/neutron
 
 %check
 PYTHON=%{pyver_bin} stestr-%{pyver} run
@@ -151,9 +136,5 @@ PYTHON=%{pyver_bin} stestr-%{pyver} run
 %license LICENSE
 %doc doc/build/html README.rst
 %endif
-
-%files -n ansible-role-%{ansible_role}
-%license LICENSE
-%{_datadir}/ansible/roles/%{ansible_role}/*
 
 %changelog
