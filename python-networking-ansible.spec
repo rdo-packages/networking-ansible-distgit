@@ -45,7 +45,7 @@ Requires:  python%{pyver}-pbr >= 2.0
 Requires:  python%{pyver}-neutron-lib >= 1.18.0
 Requires:  openstack-neutron-common >= 1:13.0.0
 Requires:  python%{pyver}-ansible-runner >= 1.0.5
-Requires:  python%{pyver}-network-runner
+Requires:  python%{pyver}-network-runner >= 0.1.7
 
 # Python code cannot work without the ansible roles
 Requires:  ansible-role-%{ansible_role} = %{version}-%{release}
