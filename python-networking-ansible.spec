@@ -18,7 +18,7 @@
 
 Name:       python-%{library}
 Version:    3.0.0
-Release:    1%{?dist}
+Release:    2%{?dist}
 Summary:    OpenStack Neutron ML2 driver for Ansible Networking
 License:    ASL 2.0
 URL:        https://storyboard.openstack.org/#!/project/986
@@ -45,7 +45,7 @@ Requires:  python%{pyver}-pbr >= 2.0
 Requires:  python%{pyver}-neutron-lib >= 1.18.0
 Requires:  openstack-neutron-common >= 1:13.0.0
 Requires:  python%{pyver}-ansible-runner >= 1.0.5
-Requires:  python%{pyver}-network-runner
+Requires:  python%{pyver}-network-runner >= 0.1.7
 
 # Python code cannot work without the ansible roles
 Requires:  ansible-role-%{ansible_role} = %{version}-%{release}
