@@ -160,3 +160,4 @@ PYTHON=%{pyver_bin} stestr-%{pyver} run
 
 * Thu Oct 24 2019 Yatin Karel <ykarel@redhat.com> 1.1.1-0.1.5cefa6agit
 - Update to pre release 1.1.1 (5cefa6a7c6ee3ec2c25e23f25bdae9138202513e)
+
