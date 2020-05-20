@@ -5,13 +5,13 @@
 %global module networking_ansible
 
 Name:       python-%{library}
-Version:    3.0.0
+Version:    4.0.0
 Release:    1%{?dist}
 Summary:    OpenStack Neutron ML2 driver for Ansible Networking
 License:    ASL 2.0
 URL:        https://storyboard.openstack.org/#!/project/986
 
-Source0:    http://tarballs.openstack.org/%{library}/%{library}-master.tar.gz
+Source0:    https://pypi.io/packages/source/n/%{module}/%{library}-%{upstream_version}.tar.gz
 
 BuildArch:  noarch
 BuildRequires:  git
@@ -116,6 +116,8 @@ PYTHON=%{__python3} stestr-3 run
 %{python3_sitelib}/%{module}
 %{python3_sitelib}/%{module}-*.egg-info
 %exclude %{python3_sitelib}/%{module}/tests
+# pypi tarballs includes unneeded content under /usr/etc
+%exclude /usr/etc
 
 %files -n python3-%{library}-tests
 %license LICENSE
@@ -128,6 +130,9 @@ PYTHON=%{__python3} stestr-3 run
 %endif
 
 %changelog
+* Wed May 20 2020 RDO <dev@lists.rdoproject.org> 4.0.0-1
+- Update to 4.0.0
+
 * Thu May 07 2020 RDO <dev@lists.rdoproject.org> 3.0.0-1
 - Update to 3.0.0
 
