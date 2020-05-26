@@ -34,7 +34,7 @@ Requires:  python3-neutron-lib >= 1.18.0
 Requires:  openstack-neutron-common >= 1:13.0.0
 Requires:  python3-ansible-runner >= 1.0.5
 Requires:  python3-tooz >= 1.28.0
-Requires:  python3-network-runner >= 0.1.7
+Requires:  python3-network-runner >= 0.2.1
 Requires:  python3-debtcollector >= 1.21.0
 
 %description -n python3-%{library}
