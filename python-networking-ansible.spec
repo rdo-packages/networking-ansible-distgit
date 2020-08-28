@@ -128,3 +128,4 @@ PYTHON=%{__python3} stestr-3 run
 %endif
 
 %changelog
+# REMOVEME: error caused by commit http://git.openstack.org/cgit/openstack/networking-ansible/commit/?id=44c430ec5a75ef594d7817a49ea20d06e1ad8321
