@@ -14,7 +14,7 @@ URL:        https://storyboard.openstack.org/#!/project/986
 Source0:    http://tarballs.openstack.org/%{library}/%{library}-master.tar.gz
 
 BuildArch:  noarch
-BuildRequires:  git
+BuildRequires:  git-core
 BuildRequires:  openstack-macros
 
 %package -n python3-%{library}
