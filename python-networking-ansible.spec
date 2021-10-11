@@ -7,8 +7,8 @@
 %global module networking_ansible
 
 Name:       python-%{library}
-Version:    XXX
-Release:    XXX
+Version:    5.0.0
+Release:    1%{?dist}
 Summary:    OpenStack Neutron ML2 driver for Ansible Networking
 License:    ASL 2.0
 URL:        https://storyboard.openstack.org/#!/project/986
@@ -146,3 +146,6 @@ PYTHON=%{__python3} stestr-3 run || true
 %endif
 
 %changelog
+* Mon Oct 11 2021 RDO <dev@lists.rdoproject.org> 5.0.0-1
+- Update to 5.0.0
+
