@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9e6b978_13056a97",
+        "filename": "python-networking-ansible.spec",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 635
+      },
+      "writtenOn": "2023-02-17T11:22:44Z",
+      "side": 1,
+      "message": "Update proposed at https://review.rdoproject.org/r/c/deps/python-network-runner/+/47103",
+      "range": {
+        "startLine": 50,
+        "startChar": 11,
+        "endLine": 50,
+        "endChar": 42
+      },
+      "revId": "100a349d44161ee98e8dec01401391cd392208ff",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    }
+  ]
+}
