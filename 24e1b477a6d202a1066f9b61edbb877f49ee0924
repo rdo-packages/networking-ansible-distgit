@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "842e34e4_0f887c88",
+        "filename": "python-networking-ansible.spec",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2023-07-12T09:12:51Z",
+      "side": 1,
+      "message": "we may add flake8 to excluded_brs.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 20
+      },
+      "revId": "24e1b477a6d202a1066f9b61edbb877f49ee0924",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8843bae6_fcdeeb38",
+        "filename": "python-networking-ansible.spec",
+        "patchSetId": 5
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 128
+      },
+      "writtenOn": "2023-07-12T09:12:51Z",
+      "side": 1,
+      "message": "Any reason to not add the usual conditional with with_doc for excluded_brs?\n\n# Exclude sphinx from BRs if docs are disabled\n%if ! 0%{?with_doc}\n%global excluded_brs %{excluded_brs} sphinx openstackdocstheme\n%endif",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 13
+      },
+      "revId": "24e1b477a6d202a1066f9b61edbb877f49ee0924",
+      "serverId": "270e2033-b340-4cff-9539-693957ebf0e7"
+    }
+  ]
+}
