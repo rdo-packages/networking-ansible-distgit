@@ -142,3 +142,4 @@ rm -rf %{buildroot}/usr/etc/neutron
 %endif
 
 %changelog
+# REMOVEME: error caused by commit https://opendev.org/openstack/networking-ansible/commit/b82d3496220f10151df1e3d5fc1d3ae77294be99
