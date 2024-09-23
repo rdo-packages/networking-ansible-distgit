@@ -1,5 +1,5 @@
 %{!?sources_gpg: %{!?dlrn:%global sources_gpg 1} }
-%global sources_gpg_sign 0x4c29ff0e437f3351fd82bdf47c5a3bc787dc7035
+%global sources_gpg_sign 0x2426b928085a020d8a90d0d879ab7008d0896c8a
 %{!?upstream_version: %global upstream_version %{version}%{?milestone}}
 
 # we are excluding some BRs from automatic generator
@@ -14,8 +14,8 @@
 %global module networking_ansible
 
 Name:       python-%{library}
-Version:    XXX
-Release:    XXX
+Version:    5.0.0
+Release:    1%{?dist}
 Summary:    OpenStack Neutron ML2 driver for Ansible Networking
 License:    Apache-2.0
 URL:        https://storyboard.openstack.org/#!/project/986
@@ -84,7 +84,7 @@ OpenStack Neutron ML2 driver for Ansible Networking
 %autosetup -n %{library}-%{upstream_version} -S git
 
 sed -i /^[[:space:]]*-c{env:.*_CONSTRAINTS_FILE.*/d tox.ini
-sed -i "s/^deps = -c{env:.*_CONSTRAINTS_FILE.*/deps =/" tox.ini
+sed -i "s/^deps = -c.*/deps =/" tox.ini
 sed -i /^minversion.*/d tox.ini
 sed -i /^requires.*virtualenv.*/d tox.ini
 
@@ -142,3 +142,6 @@ rm -rf %{buildroot}/usr/etc/neutron
 %endif
 
 %changelog
+* Mon Sep 23 2024 RDO <dev@lists.rdoproject.org> 5.0.0-1
+- Update to 5.0.0
+
